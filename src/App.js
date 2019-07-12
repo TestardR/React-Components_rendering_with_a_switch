@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import navigation from "./navigation";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    type: null
+  };
+
+  render() {
+    const { type } = this.state;
+    return (
+      <div>
+        <button onClick={() => this.setState({ type: "type1" })}>Show 1</button>
+        <button onClick={() => this.setState({ type: "type2" })}>Show 2</button>
+        <button onClick={() => this.setState({ type: "type3" })}>Show 3</button>
+        <button onClick={() => this.setState({ type: "all" })}>Show all</button>
+        {navigation(type)}
+      </div>
+    );
+  }
 }
-
-export default App;
